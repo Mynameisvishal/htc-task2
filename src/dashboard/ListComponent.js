@@ -6,7 +6,7 @@ import { EditEmployee, EmployeeContext } from '../reducer/Employee';
 
 const ListComponent=()=> {
     const {empdetails,setEmpDetails} = useContext(EmployeeContext);
-    const {empEdit,setEmpEdit} = useContext(EditEmployee);
+    const {setEmpEdit} = useContext(EditEmployee);
 
     const handleDelete = (e)=>{
         const confirmation= window.confirm("Do you want to delete the entry?");

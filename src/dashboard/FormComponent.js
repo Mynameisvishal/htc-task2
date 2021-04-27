@@ -9,7 +9,7 @@ import { EditEmployee, EmployeeContext } from '../reducer/Employee';
 
 const FormComponent=()=> {
     const { empdetails,setEmpDetails } = useContext(EmployeeContext);
-    const {empEdit,setEmpEdit} = useContext(EditEmployee);
+    const {empEdit} = useContext(EditEmployee);
     const [selectedDate,setSelectedDate] = useState(null);
     const [username,setUsername] = useState("");
     const [empid,setEmpId] = useState( 0);
@@ -50,10 +50,6 @@ const FormComponent=()=> {
     //       : "";
     //   };
 
-    const statechange = (copyData)=>{
-        setEmpDetails(copyData);
-
-    }
 
     const handleSubmit =  event => {
         event.preventDefault();
@@ -63,7 +59,7 @@ const FormComponent=()=> {
         //     console.log(handleInputError(errors,'email'));
         //   } 
         const storedvalue = JSON.parse(localStorage.getItem('employeeData'));
-        const currentDate = new Date(); const timestamp = currentDate. getTime();
+        const currentDate = new Date(); const timestamp = currentDate.getTime();
         var dateInString = selectedDate.toString();
         dateInString = dateInString.slice(4,15);
 
@@ -79,12 +75,14 @@ const FormComponent=()=> {
                 time: timestamp
             };
             console.log(empdetails[empindex]);
-            var copyData = empdetails;
-            copyData[empindex] = empData;
-            statechange(copyData);
+            
+            setEmpDetails(prevEmpDetails =>{
+                prevEmpDetails[empindex] = empData
+                return [...prevEmpDetails]
+            });
             localStorage.setItem('employeeData',JSON.stringify(empdetails));
         }else{
-            var empData = [{
+            empData = [{
                 username,
                 email,
                 empid,
