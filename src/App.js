@@ -3,6 +3,7 @@ import './App.css';
 import FormComponent from './dashboard/FormComponent';
 import ListComponent from './dashboard/ListComponent';
 import Header from './Header';
+import Post from './Post';
 import { EditEmployee, EmployeeContext } from './reducer/Employee';
 
 function App() {
@@ -30,7 +31,8 @@ function App() {
                 <div className="col-lg-8">
                     <ListComponent />
                 </div>    
-            </div>           
+            </div>   
+            <Post />        
         </div>
         </EditEmployee.Provider>
       </EmployeeContext.Provider>

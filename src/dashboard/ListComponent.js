@@ -1,6 +1,7 @@
 import React,{useContext} from 'react';
 import { useSelector } from 'react-redux';
 import { Icon } from 'semantic-ui-react';
+import UpdatedComponent from '../higherOrderComponent';
 import { EditEmployee, EmployeeContext } from '../reducer/Employee';
 
 
@@ -75,4 +76,4 @@ const ListComponent=()=> {
     )
 }
 
-export default ListComponent
+export default UpdatedComponent(ListComponent)

@@ -6,6 +6,7 @@ import validator from 'validator';
 import 'react-datepicker/dist/react-datepicker.css';
 import { EditEmployee, EmployeeContext } from '../reducer/Employee';
 import { Message } from 'semantic-ui-react';
+import UpdatedComponent from '../higherOrderComponent';
 
 
 const FormComponent=()=> {
@@ -49,17 +50,14 @@ const FormComponent=()=> {
     const handleSubmit =  event => {
         event.preventDefault();
         if(username === '' || email === '' || phone === 0 || empid ===0 || selectedDate === null){
-            console.log("inside");
             errors.push("Fill all fields");
         }else if(phone.length < 10 && phone.length > 10){
             errors.push("phone number must be 10 digits")
         } else {
             if (!validator.isEmail(email)) {
-                console.log("invalid mail");
                 errors.push("invalid email");
               } 
         }
-        console.log(errors);
         console.log(errors.length);
         if(errors.length > 0){
             setErr(errors);
@@ -82,7 +80,6 @@ const FormComponent=()=> {
                     joinDate:selectedDate,
                     time: timestamp
                 };
-                console.log(empdetails[empindex]);
                 
                 setEmpDetails(prevEmpDetails =>{
                     prevEmpDetails[empindex] = empData
@@ -184,4 +181,4 @@ const FormComponent=()=> {
         </div>
     )
 }
-export default FormComponent
+export default UpdatedComponent(FormComponent)

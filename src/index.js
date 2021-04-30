@@ -8,10 +8,10 @@ import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware } from "redux";
 import { Provider} from "react-redux";
 import ReduxThunk from 'redux-thunk';
-import { user_reducer } from './reducer';
+import { rootreducer, user_reducer } from './reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-const store = createStore(user_reducer,composeWithDevTools(applyMiddleware(ReduxThunk)));
+const store = createStore(rootreducer,composeWithDevTools(applyMiddleware(ReduxThunk)));
 
 
 ReactDOM.render(

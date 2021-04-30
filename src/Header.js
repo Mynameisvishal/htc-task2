@@ -13,7 +13,7 @@ const Header=()=> {
     let date=today.getDate() + "-"+ parseInt(today.getMonth()+1) +"-"+today.getFullYear();
     const {empdetails} = useContext(EmployeeContext);
     const dispatch = useDispatch()
-    const loggingData = useSelector(state => state.isLogged);
+    const loggingData = useSelector(state => state.user.isLogged);
     
 
     return (
