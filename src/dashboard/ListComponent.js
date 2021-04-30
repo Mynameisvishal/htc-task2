@@ -1,4 +1,5 @@
 import React,{useContext} from 'react';
+import { useSelector } from 'react-redux';
 import { Icon } from 'semantic-ui-react';
 import { EditEmployee, EmployeeContext } from '../reducer/Employee';
 
@@ -7,8 +8,11 @@ import { EditEmployee, EmployeeContext } from '../reducer/Employee';
 const ListComponent=()=> {
     const {empdetails,setEmpDetails} = useContext(EmployeeContext);
     const {setEmpEdit} = useContext(EditEmployee);
+    const loggingData = useSelector(state => state.isLogged);
+
 
     const handleDelete = (e)=>{
+        if(!loggingData) return alert('login to perform delete operation');
         const confirmation= window.confirm("Do you want to delete the entry?");
         if(confirmation){    
 

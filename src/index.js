@@ -5,11 +5,21 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'semantic-ui-css/semantic.min.css';
 import reportWebVitals from './reportWebVitals';
+import { createStore, applyMiddleware } from "redux";
+import { Provider} from "react-redux";
+import ReduxThunk from 'redux-thunk';
+import { user_reducer } from './reducer';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
+const store = createStore(user_reducer,composeWithDevTools(applyMiddleware(ReduxThunk)));
+
 
 ReactDOM.render(
+    <Provider store={store}>
   <React.StrictMode>
       <App />
-  </React.StrictMode>,
+  </React.StrictMode>
+    </Provider>,
   document.getElementById('root')
 );
 
